@@ -46,7 +46,8 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', (req, res) => {
-  res.status(200).send({ participants });
+  const list = Array.from(participants, ([, value]) => value);
+  res.status(200).send({ participants: list});
 })
 
 app.listen(port, () => {
